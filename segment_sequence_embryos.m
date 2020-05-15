@@ -4,8 +4,8 @@ close all
 
 addpath('helpercode')
 
-dirinput = 'testSequenceFrames';
-diroutput = 'Outputs/SegmentedFrames';
+dirinput = 'testimages/sequence_embryos';
+diroutput = 'testoutputs/sequence_embryos';
 
 if ~exist(diroutput, 'dir')
     mkdir(diroutput);
@@ -197,8 +197,9 @@ for i = 1:numel(fileindinput)
   cropped_img = img .* uint8(mask_last);
   cropped_img = cropped_img(top:top+height,left:left+width);
   
-  imshow(cropped_img); title('Cropped Image'); pause(1)
+  imshow(cropped_img); title('Cropped Image'); pause(2)
 
   out_name = fullfile(diroutput,file_name);
   imwrite(mask_last, char(out_name));
 end
+fprintf('\nEnd of Program\n');

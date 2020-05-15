@@ -2,8 +2,8 @@ clc
 clear
 close all
 
-dirinput = 'testImages';
-diroutput = 'Outputs/SegmentedImages';
+dirinput = 'testimages/blastocysts';
+diroutput = 'testoutputs/blastocysts';
 
 if ~exist(diroutput,'dir')
   mkdir(diroutput);
@@ -31,7 +31,7 @@ for i = 1:numel(fileindinput)
 
   threshimage = thresh_sobel(inimage);
   squareimage = square_bound(inimage, threshimage);
-  imshow(squareimage);title('Final Cropping')
+  imshow(squareimage);title('Cropped Image'); pause(2)
 
   outname = fullfile(diroutput,filesinput(fileindinput(i)).name);
   imwrite(squareimage,outname);
@@ -94,7 +94,6 @@ function out_img = thresh_sobel(in_img)
 
   sesq = strel('diamond',5);
   BWCC = imclose(BWCC,sesq);
-  imshow(BWCC);pause(2)
   out_img = bwconvhull(BWCC);
 end 
 
