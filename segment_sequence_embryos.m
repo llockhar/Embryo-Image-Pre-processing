@@ -200,6 +200,6 @@ for i = 1:numel(fileindinput)
   imshow(cropped_img); title('Cropped Image'); pause(2)
 
   out_name = fullfile(diroutput,file_name);
-  imwrite(mask_last, char(out_name));
+  imwrite(cropped_img, char(out_name));
 end
 fprintf('\nEnd of Program\n');
