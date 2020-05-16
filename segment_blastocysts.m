@@ -21,11 +21,9 @@ for i = 1:numel(fileindinput)
 
   fileprefix = split(filesinput(fileindinput(i)).name,'.');
 
-  inimage = remove_borders(inimage);
-  inimage = remove_scale(inimage);
-%   imshow(inimage);pause
-
   if size(inimage,3) == 3
+    inimage = remove_borders(inimage);
+    inimage = remove_scale(inimage);
     inimage = rgb2gray(inimage);
   end
 
